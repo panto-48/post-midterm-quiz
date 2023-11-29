@@ -1,11 +1,19 @@
-import csv, os
+import csv, os 
 
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 class DB:
-    def __init__(self):
+    def __init__(self,Film,Genre,Lead_Studio,Audience_score,Profitability,Rotten_Tomatoes,Worldwide_Gross,Year) :
         self.database = []
+        self.Film = Film
+        self.Genre = Genre
+        self.Lead_Studio = Lead_Studio
+        self.Audience_score = Audience_score
+        self.Profitability = Profitability
+        self.Rotten_Tomatoes = Rotten_Tomatoes
+        self.Worldwide_Gross = Worldwide_Gross
+        self.Year = Year
 
     def insert(self, table):
         self.database.append(table)
@@ -96,6 +104,20 @@ class Table:
                 aggregate_val_list.append(aggregate_val)
             pivot_table.append([item, aggregate_val_list])
         return pivot_table
+
+    def insert_row(self, dict):
+        dict = {}
+        dict['Film'] = 'The Shape of Water'
+        dict['Genre'] = 'Fantasy'
+        dict['Lead Studio'] = 'Fox'
+        dict['Audience score %'] = '72'
+        dict['Profitability'] = '9.765'
+        dict['Rotten Tomatoes %'] = '92'
+        dict['Worldwide Gross'] = '195.3'
+        dict['Year'] = '2017'
+
+    def update_row(self, primary_attribute, primary_attribute_value, update_attribute, update_value):
+        pass
 
     def __str__(self):
         return self.table_name + ':' + str(self.table)
